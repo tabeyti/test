@@ -1,0 +1,211 @@
+apply plugin: 'groovy'
+
+ext {
+
+    jenkinsVersion = '2.46.3'
+
+}
+
+
+repositories {
+    jcenter()
+    maven {        
+        url 'https://repo.jenkins-ci.org/public/'
+    }
+    
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.11'
+
+    /**
+     * JenkinsPipelineUnit for testing pipelines from:
+     * https://github.com/lesfurets/JenkinsPipelineUnit
+     */
+    testCompile 'com.lesfurets:jenkins-pipeline-unit:0.12'
+
+    /**
+     * Test framwork stuff
+     */
+    testCompile 'org.spockframework:spock-core:1.1-groovy-2.4'
+    testCompile 'cglib:cglib-nodep:3.2.2'
+    testCompile 'org.objenesis:objenesis:1.2'
+    testCompile 'org.assertj:assertj-core:3.7.0'
+
+    testCompile 'org.jenkins-ci.main:jenkins-test-harness:2.27'
+    testCompile "org.jenkins-ci.main:jenkins-war:${jenkinsVersion}"
+    testCompile "org.jenkins-ci.main:jenkins-war:${jenkinsVersion}:war-for-test@jar"
+
+    testCompile ('org.jenkins-ci.ui:ace-editor:1.1') {  force = true; artifact {name='ace-editor';type='jar'}; artifact {name='ace-editor';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:active-directory:2.4') {  force = true; artifact {name='active-directory';type='jar'}; artifact {name='active-directory';type='hpi' } }
+    testCompile ('org.jvnet.hudson.plugins:analysis-core:1.79') {  force = true; artifact {name='analysis-core';type='jar'}; artifact {name='analysis-core';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:ansicolor:0.4.2') {  force = true; artifact {name='ansicolor';type='jar'}; artifact {name='ansicolor';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:ant:1.2') {  force = true; artifact {name='ant';type='jar'}; artifact {name='ant';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:antisamy-markup-formatter:1.1') {  force = true; artifact {name='antisamy-markup-formatter';type='jar'}; artifact {name='antisamy-markup-formatter';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:artifactdeployer:0.33') {  force = true; artifact {name='artifactdeployer';type='jar'}; artifact {name='artifactdeployer';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:artifactory:2.6.0') {  force = true; artifact {name='artifactory';type='jar'}; artifact {name='artifactory';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:authentication-tokens:1.3') {  force = true; artifact {name='authentication-tokens';type='jar'}; artifact {name='authentication-tokens';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:aws-credentials:1.16') {  force = true; artifact {name='aws-credentials';type='jar'}; artifact {name='aws-credentials';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:aws-java-sdk:1.11.37') {  force = true; artifact {name='aws-java-sdk';type='jar'}; artifact {name='aws-java-sdk';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:blueocean-autofavorite:0.7') {  force = true; artifact {name='blueocean-autofavorite';type='jar'}; artifact {name='blueocean-autofavorite';type='hpi' } }
+    testCompile ('io.jenkins.blueocean:blueocean-commons:1.0.1') {  force = true; artifact {name='blueocean-commons';type='jar'}; artifact {name='blueocean-commons';type='hpi' } }
+    testCompile ('io.jenkins.blueocean:blueocean-config:1.0.1') {  force = true; artifact {name='blueocean-config';type='jar'}; artifact {name='blueocean-config';type='hpi' } }
+    testCompile ('io.jenkins.blueocean:blueocean-dashboard:1.0.1') {  force = true; artifact {name='blueocean-dashboard';type='jar'}; artifact {name='blueocean-dashboard';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:blueocean-display-url:2.0') {  force = true; artifact {name='blueocean-display-url';type='jar'}; artifact {name='blueocean-display-url';type='hpi' } }
+    testCompile ('io.jenkins.blueocean:blueocean-events:1.0.1') {  force = true; artifact {name='blueocean-events';type='jar'}; artifact {name='blueocean-events';type='hpi' } }
+    testCompile ('io.jenkins.blueocean:blueocean-git-pipeline:1.0.1') {  force = true; artifact {name='blueocean-git-pipeline';type='jar'}; artifact {name='blueocean-git-pipeline';type='hpi' } }
+    testCompile ('io.jenkins.blueocean:blueocean-github-pipeline:1.0.1') {  force = true; artifact {name='blueocean-github-pipeline';type='jar'}; artifact {name='blueocean-github-pipeline';type='hpi' } }
+    testCompile ('io.jenkins.blueocean:blueocean-i18n:1.0.1') {  force = true; artifact {name='blueocean-i18n';type='jar'}; artifact {name='blueocean-i18n';type='hpi' } }
+    testCompile ('io.jenkins.blueocean:blueocean-jwt:1.0.1') {  force = true; artifact {name='blueocean-jwt';type='jar'}; artifact {name='blueocean-jwt';type='hpi' } }
+    testCompile ('io.jenkins.blueocean:blueocean-personalization:1.0.1') {  force = true; artifact {name='blueocean-personalization';type='jar'}; artifact {name='blueocean-personalization';type='hpi' } }
+    testCompile ('io.jenkins.blueocean:blueocean-pipeline-api-impl:1.0.1') {  force = true; artifact {name='blueocean-pipeline-api-impl';type='jar'}; artifact {name='blueocean-pipeline-api-impl';type='hpi' } }
+    testCompile ('io.jenkins.blueocean:blueocean-pipeline-editor:0.2.0') {  force = true; artifact {name='blueocean-pipeline-editor';type='jar'}; artifact {name='blueocean-pipeline-editor';type='hpi' } }
+    testCompile ('io.jenkins.blueocean:blueocean-rest-impl:1.0.1') {  force = true; artifact {name='blueocean-rest-impl';type='jar'}; artifact {name='blueocean-rest-impl';type='hpi' } }
+    testCompile ('io.jenkins.blueocean:blueocean-rest:1.0.1') {  force = true; artifact {name='blueocean-rest';type='jar'}; artifact {name='blueocean-rest';type='hpi' } }
+    testCompile ('io.jenkins.blueocean:blueocean-web:1.0.1') {  force = true; artifact {name='blueocean-web';type='jar'}; artifact {name='blueocean-web';type='hpi' } }
+    testCompile ('io.jenkins.blueocean:blueocean:1.0.1') {  force = true; artifact {name='blueocean';type='jar'}; artifact {name='blueocean';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:bouncycastle-api:2.16.0') {  force = true; artifact {name='bouncycastle-api';type='jar'}; artifact {name='bouncycastle-api';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:branch-api:2.0.8') {  force = true; artifact {name='branch-api';type='jar'}; artifact {name='branch-api';type='hpi' } }
+    testCompile ('com.cloudbees.plugins:build-flow-plugin:0.20') {  force = true; artifact {name='build-flow-plugin';type='jar'}; artifact {name='build-flow-plugin';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:build-name-setter:1.6.5') {  force = true; artifact {name='build-name-setter';type='jar'}; artifact {name='build-name-setter';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:build-pipeline-plugin:1.5.4') {  force = true; artifact {name='build-pipeline-plugin';type='jar'}; artifact {name='build-pipeline-plugin';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:cloudbees-folder:6.0.3') {  force = true; artifact {name='cloudbees-folder';type='jar'}; artifact {name='cloudbees-folder';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:cobertura:1.11') {  force = true; artifact {name='cobertura';type='jar'}; artifact {name='cobertura';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:conditional-buildstep:1.3.5') {  force = true; artifact {name='conditional-buildstep';type='jar'}; artifact {name='conditional-buildstep';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:config-file-provider:2.11') {  force = true; artifact {name='config-file-provider';type='jar'}; artifact {name='config-file-provider';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:copyartifact:1.38.1') {  force = true; artifact {name='copyartifact';type='jar'}; artifact {name='copyartifact';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:credentials-binding:1.10') {  force = true; artifact {name='credentials-binding';type='jar'}; artifact {name='credentials-binding';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:credentials:2.1.13') {  force = true; artifact {name='credentials';type='jar'}; artifact {name='credentials';type='hpi' } }
+    testCompile ('com.cloudbees.jenkins.plugins:custom-tools-plugin:0.4.4') {  force = true; artifact {name='custom-tools-plugin';type='jar'}; artifact {name='custom-tools-plugin';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:cvs:2.11') {  force = true; artifact {name='cvs';type='jar'}; artifact {name='cvs';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:dashboard-view:2.9.11') {  force = true; artifact {name='dashboard-view';type='jar'}; artifact {name='dashboard-view';type='hpi' } }
+    testCompile ('se.diabol.jenkins.pipeline:delivery-pipeline-plugin:1.0.3') {  force = true; artifact {name='delivery-pipeline-plugin';type='jar'}; artifact {name='delivery-pipeline-plugin';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:display-url-api:2.0') {  force = true; artifact {name='display-url-api';type='jar'}; artifact {name='display-url-api';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:docker-commons:1.6') {  force = true; artifact {name='docker-commons';type='jar'}; artifact {name='docker-commons';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:docker-workflow:1.10') {  force = true; artifact {name='docker-workflow';type='jar'}; artifact {name='docker-workflow';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:durable-task:1.13') {  force = true; artifact {name='durable-task';type='jar'}; artifact {name='durable-task';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:email-ext:2.51') {  force = true; artifact {name='email-ext';type='jar'}; artifact {name='email-ext';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:envinject:1.93.1') {  force = true; artifact {name='envinject';type='jar'}; artifact {name='envinject';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:extended-choice-parameter:0.75') {  force = true; artifact {name='extended-choice-parameter';type='jar'}; artifact {name='extended-choice-parameter';type='hpi' } }
+    testCompile ('jp.ikedam.jenkins.plugins:extensible-choice-parameter:1.3.3') {  force = true; artifact {name='extensible-choice-parameter';type='jar'}; artifact {name='extensible-choice-parameter';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:external-monitor-job:1.4') {  force = true; artifact {name='external-monitor-job';type='jar'}; artifact {name='external-monitor-job';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:ez-templates:1.2.1') {  force = true; artifact {name='ez-templates';type='jar'}; artifact {name='ez-templates';type='hpi' } }
+    testCompile ('org.jvnet.hudson.plugins:favorite:2.0.4') {  force = true; artifact {name='favorite';type='jar'}; artifact {name='favorite';type='hpi' } }
+    testCompile ('sp.sd:file-operations:1.3') {  force = true; artifact {name='file-operations';type='jar'}; artifact {name='file-operations';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:git-client:2.4.6') {  force = true; artifact {name='git-client';type='jar'}; artifact {name='git-client';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:git-server:1.7') {  force = true; artifact {name='git-server';type='jar'}; artifact {name='git-server';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:git:3.3.0') {  force = true; artifact {name='git';type='jar'}; artifact {name='git';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:github-api:1.85') {  force = true; artifact {name='github-api';type='jar'}; artifact {name='github-api';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:github-branch-source:2.0.5') {  force = true; artifact {name='github-branch-source';type='jar'}; artifact {name='github-branch-source';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:github-oauth:0.24') {  force = true; artifact {name='github-oauth';type='jar'}; artifact {name='github-oauth';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:github-organization-folder:1.6') {  force = true; artifact {name='github-organization-folder';type='jar'}; artifact {name='github-organization-folder';type='hpi' } }
+    testCompile ('com.coravy.hudson.plugins.github:github:1.27.0') {  force = true; artifact {name='github';type='jar'}; artifact {name='github';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:gradle:1.25') {  force = true; artifact {name='gradle';type='jar'}; artifact {name='gradle';type='hpi' } }
+    testCompile ('org.jenkins-ci.ui:handlebars:1.1.1') {  force = true; artifact {name='handlebars';type='jar'}; artifact {name='handlebars';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:http_request:1.8.11') {  force = true; artifact {name='http_request';type='jar'}; artifact {name='http_request';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins.icon-shim:icon-shim:2.0.3') {  force = true; artifact {name='icon-shim';type='jar'}; artifact {name='icon-shim';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:influxdb:1.12.3') {  force = true; artifact {name='influxdb';type='jar'}; artifact {name='influxdb';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:ivy:1.26') {  force = true; artifact {name='ivy';type='jar'}; artifact {name='ivy';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:jackson2-api:2.7.3') {  force = true; artifact {name='jackson2-api';type='jar'}; artifact {name='jackson2-api';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:javadoc:1.1') {  force = true; artifact {name='javadoc';type='jar'}; artifact {name='javadoc';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:jenkins-multijob-plugin:1.22') {  force = true; artifact {name='jenkins-multijob-plugin';type='jar'}; artifact {name='jenkins-multijob-plugin';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:jira-steps:1.0.1') {  force = true; artifact {name='jira-steps';type='jar'}; artifact {name='jira-steps';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:jira:2.3') {  force = true; artifact {name='jira';type='jar'}; artifact {name='jira';type='hpi' } }
+    testCompile ('com.synopsys.arc.jenkinsci.plugins:job-restrictions:0.4') {  force = true; artifact {name='job-restrictions';type='jar'}; artifact {name='job-restrictions';type='hpi' } }
+    testCompile ('org.jenkins-ci.ui:jquery-detached:1.2.1') {  force = true; artifact {name='jquery-detached';type='jar'}; artifact {name='jquery-detached';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:jquery:1.11.2-0') {  force = true; artifact {name='jquery';type='jar'}; artifact {name='jquery';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:junit:1.21') {  force = true; artifact {name='junit';type='jar'}; artifact {name='junit';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:ldap:1.11') {  force = true; artifact {name='ldap';type='jar'}; artifact {name='ldap';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:log-parser:2.0') {  force = true; artifact {name='log-parser';type='jar'}; artifact {name='log-parser';type='hpi' } }
+    testCompile ('net.praqma:logging:1.0.0') {  force = true; artifact {name='logging';type='jar'}; artifact {name='logging';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:mailer:1.20') {  force = true; artifact {name='mailer';type='jar'}; artifact {name='mailer';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:mapdb-api:1.0.9.0') {  force = true; artifact {name='mapdb-api';type='jar'}; artifact {name='mapdb-api';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:mask-passwords:2.8') {  force = true; artifact {name='mask-passwords';type='jar'}; artifact {name='mask-passwords';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:matrix-auth:1.1') {  force = true; artifact {name='matrix-auth';type='jar'}; artifact {name='matrix-auth';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:matrix-project:1.11') {  force = true; artifact {name='matrix-project';type='jar'}; artifact {name='matrix-project';type='hpi' } }
+    testCompile ('net.praqma:matrix-reloaded:1.1.3') {  force = true; artifact {name='matrix-reloaded';type='jar'}; artifact {name='matrix-reloaded';type='hpi' } }
+    testCompile ('org.jenkins-ci.main:maven-plugin:2.14') {  force = true; artifact {name='maven-plugin';type='jar'}; artifact {name='maven-plugin';type='hpi' } }
+    testCompile ('org.jenkins-ci.ui:momentjs:1.1.1') {  force = true; artifact {name='momentjs';type='jar'}; artifact {name='momentjs';type='hpi' } }
+    testCompile ('org.jvnet.hudson.plugins:monitoring:1.59.0') {  force = true; artifact {name='monitoring';type='jar'}; artifact {name='monitoring';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:msbuild:1.25') {  force = true; artifact {name='msbuild';type='jar'}; artifact {name='msbuild';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:next-build-number:1.3') {  force = true; artifact {name='next-build-number';type='jar'}; artifact {name='next-build-number';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:nodelabelparameter:1.7.2') {  force = true; artifact {name='nodelabelparameter';type='jar'}; artifact {name='nodelabelparameter';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:nuget:0.6') {  force = true; artifact {name='nuget';type='jar'}; artifact {name='nuget';type='hpi' } }
+    testCompile ('hudson.plugins.octopusdeploy:octopusdeploy:1.4.0') {  force = true; artifact {name='octopusdeploy';type='jar'}; artifact {name='octopusdeploy';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:p4:1.4.3') {  force = true; artifact {name='p4';type='jar'}; artifact {name='p4';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:pam-auth:1.1') {  force = true; artifact {name='pam-auth';type='jar'}; artifact {name='pam-auth';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:parameterized-scheduler:0.4') {  force = true; artifact {name='parameterized-scheduler';type='jar'}; artifact {name='parameterized-scheduler';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:parameterized-trigger:2.32') {  force = true; artifact {name='parameterized-trigger';type='jar'}; artifact {name='parameterized-trigger';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:performance:3.3') {  force = true; artifact {name='performance';type='jar'}; artifact {name='performance';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:pipeline-build-step:2.4') {  force = true; artifact {name='pipeline-build-step';type='jar'}; artifact {name='pipeline-build-step';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:pipeline-github-lib:1.0') {  force = true; artifact {name='pipeline-github-lib';type='jar'}; artifact {name='pipeline-github-lib';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:pipeline-graph-analysis:1.3') {  force = true; artifact {name='pipeline-graph-analysis';type='jar'}; artifact {name='pipeline-graph-analysis';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:pipeline-input-step:2.5') {  force = true; artifact {name='pipeline-input-step';type='jar'}; artifact {name='pipeline-input-step';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:pipeline-milestone-step:1.3') {  force = true; artifact {name='pipeline-milestone-step';type='jar'}; artifact {name='pipeline-milestone-step';type='hpi' } }
+    testCompile ('org.jenkinsci.plugins:pipeline-model-api:1.1.1') {  force = true; artifact {name='pipeline-model-api';type='jar'}; artifact {name='pipeline-model-api';type='hpi' } }
+    testCompile ('org.jenkinsci.plugins:pipeline-model-definition:1.1.1') {  force = true; artifact {name='pipeline-model-definition';type='jar'}; artifact {name='pipeline-model-definition';type='hpi' } }
+    testCompile ('org.jenkinsci.plugins:pipeline-model-extensions:1.1.1') {  force = true; artifact {name='pipeline-model-extensions';type='jar'}; artifact {name='pipeline-model-extensions';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins.pipeline-stage-view:pipeline-rest-api:2.8') {  force = true; artifact {name='pipeline-rest-api';type='jar'}; artifact {name='pipeline-rest-api';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:pipeline-stage-step:2.2') {  force = true; artifact {name='pipeline-stage-step';type='jar'}; artifact {name='pipeline-stage-step';type='hpi' } }
+    testCompile ('org.jenkinsci.plugins:pipeline-stage-tags-metadata:1.1.1') {  force = true; artifact {name='pipeline-stage-tags-metadata';type='jar'}; artifact {name='pipeline-stage-tags-metadata';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins.pipeline-stage-view:pipeline-stage-view:2.6') {  force = true; artifact {name='pipeline-stage-view';type='jar'}; artifact {name='pipeline-stage-view';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:pipeline-utility-steps:1.1.6') {  force = true; artifact {name='pipeline-utility-steps';type='jar'}; artifact {name='pipeline-utility-steps';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:plain-credentials:1.4') {  force = true; artifact {name='plain-credentials';type='jar'}; artifact {name='plain-credentials';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:postbuildscript:0.17') {  force = true; artifact {name='postbuildscript';type='jar'}; artifact {name='postbuildscript';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:preSCMbuildstep:0.3') {  force = true; artifact {name='preSCMbuildstep';type='jar'}; artifact {name='preSCMbuildstep';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:PrioritySorter:3.5.0') {  force = true; artifact {name='PrioritySorter';type='jar'}; artifact {name='PrioritySorter';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:pubsub-light:1.8') {  force = true; artifact {name='pubsub-light';type='jar'}; artifact {name='pubsub-light';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:purge-build-queue-plugin:1.0') {  force = true; artifact {name='purge-build-queue-plugin';type='jar'}; artifact {name='purge-build-queue-plugin';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:python:1.3') {  force = true; artifact {name='python';type='jar'}; artifact {name='python';type='hpi' } }
+    testCompile ('com.sonyericsson.hudson.plugins.rebuild:rebuild:1.25') {  force = true; artifact {name='rebuild';type='jar'}; artifact {name='rebuild';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:robot:1.6.4') {  force = true; artifact {name='robot';type='jar'}; artifact {name='robot';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:run-condition:1.0') {  force = true; artifact {name='run-condition';type='jar'}; artifact {name='run-condition';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:scm-api:2.1.1') {  force = true; artifact {name='scm-api';type='jar'}; artifact {name='scm-api';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:scm-sync-configuration:0.0.9') {  force = true; artifact {name='scm-sync-configuration';type='jar'}; artifact {name='scm-sync-configuration';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:script-security:1.27') {  force = true; artifact {name='script-security';type='jar'}; artifact {name='script-security';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:scriptler:2.9') {  force = true; artifact {name='scriptler';type='jar'}; artifact {name='scriptler';type='hpi' } }
+    testCompile ('org.jvnet.hudson.plugins:sicci_for_xcode:0.0.8') {  force = true; artifact {name='sicci_for_xcode';type='jar'}; artifact {name='sicci_for_xcode';type='hpi' } }
+    testCompile ('org.codefirst.jenkins.simplethemeplugin:simple-theme-plugin:0.3') {  force = true; artifact {name='simple-theme-plugin';type='jar'}; artifact {name='simple-theme-plugin';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:skip-certificate-check:1.0') {  force = true; artifact {name='skip-certificate-check';type='jar'}; artifact {name='skip-certificate-check';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:slack:2.0.1') {  force = true; artifact {name='slack';type='jar'}; artifact {name='slack';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:slave-proxy:1.1') {  force = true; artifact {name='slave-proxy';type='jar'}; artifact {name='slave-proxy';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:sse-gateway:1.15') {  force = true; artifact {name='sse-gateway';type='jar'}; artifact {name='sse-gateway';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:ssh-agent:1.15') {  force = true; artifact {name='ssh-agent';type='jar'}; artifact {name='ssh-agent';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:ssh-credentials:1.13') {  force = true; artifact {name='ssh-credentials';type='jar'}; artifact {name='ssh-credentials';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:ssh-slaves:1.9') {  force = true; artifact {name='ssh-slaves';type='jar'}; artifact {name='ssh-slaves';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:structs:1.10') {  force = true; artifact {name='structs';type='jar'}; artifact {name='structs';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:subversion:2.6') {  force = true; artifact {name='subversion';type='jar'}; artifact {name='subversion';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:throttle-concurrents:2.0') {  force = true; artifact {name='throttle-concurrents';type='jar'}; artifact {name='throttle-concurrents';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:timestamper:1.8.8') {  force = true; artifact {name='timestamper';type='jar'}; artifact {name='timestamper';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:token-macro:2.0') {  force = true; artifact {name='token-macro';type='jar'}; artifact {name='token-macro';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:translation:1.10') {  force = true; artifact {name='translation';type='jar'}; artifact {name='translation';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:validating-string-parameter:2.3') {  force = true; artifact {name='validating-string-parameter';type='jar'}; artifact {name='validating-string-parameter';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:variant:1.1') {  force = true; artifact {name='variant';type='jar'}; artifact {name='variant';type='hpi' } }
+    testCompile ('org.jvnet.hudson.plugins:warnings:4.56') {  force = true; artifact {name='warnings';type='jar'}; artifact {name='warnings';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:windows-slaves:1.0') {  force = true; artifact {name='windows-slaves';type='jar'}; artifact {name='windows-slaves';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins.workflow:workflow-aggregator:2.5') {  force = true; artifact {name='workflow-aggregator';type='jar'}; artifact {name='workflow-aggregator';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins.workflow:workflow-api:2.16') {  force = true; artifact {name='workflow-api';type='jar'}; artifact {name='workflow-api';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins.workflow:workflow-basic-steps:2.4') {  force = true; artifact {name='workflow-basic-steps';type='jar'}; artifact {name='workflow-basic-steps';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins.workflow:workflow-cps-global-lib:2.7') {  force = true; artifact {name='workflow-cps-global-lib';type='jar'}; artifact {name='workflow-cps-global-lib';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins.workflow:workflow-cps:2.29') {  force = true; artifact {name='workflow-cps';type='jar'}; artifact {name='workflow-cps';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins.workflow:workflow-durable-task-step:2.11') {  force = true; artifact {name='workflow-durable-task-step';type='jar'}; artifact {name='workflow-durable-task-step';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins.workflow:workflow-job:2.10') {  force = true; artifact {name='workflow-job';type='jar'}; artifact {name='workflow-job';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins.workflow:workflow-multibranch:2.14') {  force = true; artifact {name='workflow-multibranch';type='jar'}; artifact {name='workflow-multibranch';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins.workflow:workflow-scm-step:2.4') {  force = true; artifact {name='workflow-scm-step';type='jar'}; artifact {name='workflow-scm-step';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins.workflow:workflow-step-api:2.10') {  force = true; artifact {name='workflow-step-api';type='jar'}; artifact {name='workflow-step-api';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins.workflow:workflow-support:2.14') {  force = true; artifact {name='workflow-support';type='jar'}; artifact {name='workflow-support';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:xcode-plugin:1.4.9') {  force = true; artifact {name='xcode-plugin';type='jar'}; artifact {name='xcode-plugin';type='hpi' } }
+    testCompile ('org.jenkins-ci.plugins:xunit:1.102') {  force = true; artifact {name='xunit';type='jar'}; artifact {name='xunit';type='hpi' } }
+}
+
+test {
+    systemProperty "pipeline.stack.write", System.properties["pipeline.stack.write"]
+}
+
+sourceSets {
+    test {
+        groovy {
+            srcDirs= ["tests/groovy"]
+        }
+    }
+}
