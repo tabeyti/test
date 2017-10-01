@@ -2,4 +2,5 @@
 .gradle
 build
 *.log
-.txt
+*.txt
+target
